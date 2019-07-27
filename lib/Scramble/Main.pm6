@@ -10,14 +10,18 @@ sub MAIN(--> Nil)
 {
     Scramble::Terminal::open();
 
-    my uint16 @tiles[16; 16];
-    for ^16 X ^16 -> ($x, $y) {
-        my $n := (1 + simplex-noise($x.Num / 10, $y.Num / 10)) / 2;
-        @tiles[$x; $y] = (3 * $n).Int;
+    for ^6 X ^2 -> ($rx, $ry) {
+        my uint16 @tiles[16; 16];
+        for ^16 X ^16 -> ($tx, $ty) {
+            my $n := (1 + simplex-noise(($rx * 16 + $tx).Num / 10,
+                                        ($rx * 16 + $ty).Num / 10)) / 2;
+            @tiles[$tx; $ty] = (3 * $n).Int;
+        }
+
+        my $region := Scramble::Region.new(:@tiles);
+        $region.render($rx * 16, 4 + $ry * 16);
     }
 
-    my $region := Scramble::Region.new(:@tiles);
-    $region.render(0, 4);
     Scramble::Terminal::refresh();
 
     sleep(60);
