@@ -40,6 +40,13 @@ our constant MOSSY-GRASS = 2;
     background-color => 0xff8a9a5b,
 );
 
+our constant ROCK = 3;
+@tiles[ROCK] = Scramble::Tile::Simple.new(
+    character => ‘%’,
+    foreground-color => 0xff8e9b9e,
+    background-color => 0xff808487,
+);
+
 sub tile-info(Int:D $id --> Scramble::Tile:D)
     is export
 {
