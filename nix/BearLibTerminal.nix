@@ -1,4 +1,4 @@
-{stdenv, cmake, libGL, xorg, tree}:
+{stdenv, cmake, libGL, xorg}:
 stdenv.mkDerivation {
     name = "BearLibTerminal";
 
@@ -7,7 +7,7 @@ stdenv.mkDerivation {
         sha256 = "1j2y5yf5cp8dz4m5sm55cl99gvkjfk6qjq3ckif459zjwzlkl4g9";
     };
 
-    buildInputs = [cmake libGL xorg.libX11 xorg.libXmu tree];
+    buildInputs = [cmake libGL xorg.libX11 xorg.libXmu];
 
     # BearLibTerminal ships with examples. We don't need them, so we're not
     # going to compile them.
