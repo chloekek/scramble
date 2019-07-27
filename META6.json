@@ -1,7 +1,9 @@
 {
     "name": "scramble",
     "provides": {
+        "Noise::Simplex": "lib/Noise/Simplex.pm6",
         "Scramble::Main": "lib/Scramble/Main.pm6",
+        "Scramble::Region": "lib/Scramble/Region.pm6",
         "Scramble::Terminal": "lib/Scramble/Terminal.pm6"
     }
 }

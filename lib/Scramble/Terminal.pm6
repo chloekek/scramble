@@ -24,7 +24,7 @@ our sub close(--> Nil)
     FFI::terminal_close();
 }
 
-our sub print(int32:D $x, int32:D $y, Str:D $s --> Nil)
+our sub print(Int:D $x, Int:D $y, Str:D $s --> Nil)
 {
     my int32 $out-w;
     my int32 $out-h;
