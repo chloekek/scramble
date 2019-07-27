@@ -26,11 +26,11 @@ our constant WATER = 0;
     background-color => 0xff224187,
 );
 
-our constant DIRT = 1;
-@tiles[DIRT] = Scramble::Tile::Simple.new(
+our constant SAND = 1;
+@tiles[SAND] = Scramble::Tile::Simple.new(
     character => ‘.’,
-    foreground-color => 0xffb37657,
-    background-color => 0xff9b7653,
+    foreground-color => 0xffd9bb84,
+    background-color => 0xffc2b280,
 );
 
 our constant GRASS = 2;
