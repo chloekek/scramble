@@ -12,6 +12,8 @@ my module FFI {
     our sub terminal_print_ext8(int32, int32, int32, int32, int32, Str:D, int32 is rw, int32 is rw) is native(L) {*}
     our sub terminal_read(--> int32) is native(L) {*}
     our sub terminal_refresh() is native(L) {*}
+    our sub terminal_color(uint32) is native(L) {*}
+    our sub terminal_bkcolor(uint32) is native(L) {*}
 }
 
 our sub open(--> Nil)
@@ -22,6 +24,16 @@ our sub open(--> Nil)
 our sub close(--> Nil)
 {
     FFI::terminal_close();
+}
+
+our sub foreground-color(Int:D $c --> Nil)
+{
+    FFI::terminal_color($c);
+}
+
+our sub background-color(Int:D $c --> Nil)
+{
+    FFI::terminal_bkcolor($c);
 }
 
 our sub print(Int:D $x, Int:D $y, Str:D $s --> Nil)
