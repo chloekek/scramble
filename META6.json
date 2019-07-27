@@ -1,0 +1,7 @@
+{
+    "name": "scramble",
+    "provides": {
+        "Scramble::Main": "lib/Scramble/Main.pm6",
+        "Scramble::Terminal": "lib/Scramble/Terminal.pm6"
+    }
+}
