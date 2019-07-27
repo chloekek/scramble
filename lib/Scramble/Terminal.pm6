@@ -5,15 +5,11 @@ my module FFI {
 
     my constant L = ‘BearLibTerminal’;
 
-    class dimensions_t is repr(‘CStruct’)
-    {
-        has int32 $.width;
-        has int32 $.height;
-    }
+    our constant TK_ALIGN_DEFAULT = 0;
 
     our sub terminal_close() is native(L) {*}
     our sub terminal_open(--> int32) is native(L) {*}
-    our sub terminal_print(int32, int32, Str:D --> dimensions_t) is native(L) {*}
+    our sub terminal_print_ext8(int32, int32, int32, int32, int32, Str:D, int32 is rw, int32 is rw) is native(L) {*}
     our sub terminal_read(--> int32) is native(L) {*}
     our sub terminal_refresh() is native(L) {*}
 }
@@ -26,6 +22,19 @@ our sub open(--> Nil)
 our sub close(--> Nil)
 {
     FFI::terminal_close();
+}
+
+our sub print(int32:D $x, int32:D $y, Str:D $s --> Nil)
+{
+    my int32 $out-w;
+    my int32 $out-h;
+    FFI::terminal_print_ext8(
+        $x, $y,
+        0, 0,
+        FFI::TK_ALIGN_DEFAULT,
+        $s,
+        $out-w, $out-h,
+    );
 }
 
 our sub refresh(--> Nil)
