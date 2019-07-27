@@ -15,7 +15,7 @@ sub MAIN(--> Nil)
         for ^16 X ^16 -> ($tx, $ty) {
             my $n := (1 + simplex-noise(($rx * 16 + $tx).Num / 10,
                                         ($rx * 16 + $ty).Num / 10)) / 2;
-            @tiles[$tx; $ty] = (4 * $n).Int;
+            @tiles[$tx; $ty] = (6 * $n).Int;
         }
 
         my $region := Scramble::Region.new(:@tiles);
