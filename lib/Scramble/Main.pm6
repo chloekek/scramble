@@ -1,6 +1,7 @@
 unit module Main;
 
 use Noise::Simplex;
+use Scramble::Map;
 use Scramble::Region;
 use Scramble::Terminal;
 use Scramble::Tiles;
@@ -11,6 +12,8 @@ sub MAIN(--> Nil)
 {
     Scramble::Terminal::open();
 
+    my $map := Scramble::Map.new;
+
     for ^6 X ^2 -> ($rx, $ry) {
         my uint16 @tiles[16; 16];
         for ^16 X ^16 -> ($tx, $ty) {
@@ -20,9 +23,12 @@ sub MAIN(--> Nil)
         }
 
         my $region := Scramble::Region.new(:@tiles);
-        my $vp := 16 ~* Scramble::Vector.new($rx, $ry);
-        $region.render($vp);
+        my $region-position := Scramble::Vector.new($rx, $ry);
+        $map.regions{$region-position} = $region;
     }
+
+    my $vp := Scramble::Vector.new(0, 0);
+    $map.render($vp);
 
     Scramble::Terminal::refresh();
 

@@ -9,13 +9,13 @@ class Scramble::Vector
     }
 }
 
-sub infix:«~+»(Scramble::Vector:D $a, Scramble::Vector:D $b --> Scramble::Vector:D)
+multi infix:«+»(Scramble::Vector:D $a, Scramble::Vector:D $b --> Scramble::Vector:D)
     is export
 {
     Scramble::Vector.new($a.x + $b.x, $a.y + $b.y);
 }
 
-sub infix:«~*»(Int:D $a, Scramble::Vector:D $b --> Scramble::Vector:D)
+multi infix:«*»(Int:D $a, Scramble::Vector:D $b --> Scramble::Vector:D)
     is export
 {
     Scramble::Vector.new($a * $b.x, $a * $b.y);
