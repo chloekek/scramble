@@ -2,6 +2,8 @@
     "name": "scramble",
     "provides": {
         "Noise::Simplex": "lib/Noise/Simplex.pm6",
+        "Scramble::Entity": "lib/Scramble/Entity.pm6",
+        "Scramble::Entity::PlayerCharacter": "lib/Scramble/Entity/PlayerCharacter.pm6",
         "Scramble::Main": "lib/Scramble/Main.pm6",
         "Scramble::Map": "lib/Scramble/Map.pm6",
         "Scramble::Region": "lib/Scramble/Region.pm6",

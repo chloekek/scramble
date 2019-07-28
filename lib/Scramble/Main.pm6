@@ -1,6 +1,7 @@
 unit module Main;
 
 use Noise::Simplex;
+use Scramble::Entity::PlayerCharacter;
 use Scramble::Map;
 use Scramble::Region;
 use Scramble::Terminal;
@@ -27,8 +28,12 @@ sub MAIN(--> Nil)
         $map.regions{$region-position} = $region;
     }
 
+    my $player-position := Scramble::Vector.new(30, 20);
+    my $pc := Scramble::Entity::PlayerCharacter.new(position => $player-position);
+
     my $vp := Scramble::Vector.new(0, 0);
     $map.render($vp);
+    $pc.render($vp);
 
     Scramble::Terminal::refresh();
 
