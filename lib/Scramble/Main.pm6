@@ -31,13 +31,21 @@ sub MAIN(--> Nil)
     my $player-position := Scramble::Vector.new(30, 20);
     my $pc := Scramble::Entity::PlayerCharacter.new(position => $player-position);
 
-    my $vp := Scramble::Vector.new(0, 0);
-    $map.render($vp);
-    $pc.render($vp);
+    loop {
+        my $vp := Scramble::Vector.new(0, 0);
+        $map.render($vp);
+        $pc.render($vp);
 
-    Scramble::Terminal::refresh();
+        Scramble::Terminal::refresh();
 
-    sleep(60);
+        given Scramble::Terminal::read() {
+            when Scramble::Terminal::TK_W { $pc.position += Scramble::Vector.new( 0, -1) }
+            when Scramble::Terminal::TK_S { $pc.position += Scramble::Vector.new( 0, +1) }
+            when Scramble::Terminal::TK_A { $pc.position += Scramble::Vector.new(-1,  0) }
+            when Scramble::Terminal::TK_D { $pc.position += Scramble::Vector.new(+1,  0) }
+            when Scramble::Terminal::TK_CLOSE { last }
+        }
+    }
 
     Scramble::Terminal::close();
 }
