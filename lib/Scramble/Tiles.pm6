@@ -1,6 +1,7 @@
 unit module Scramble::Tiles;
 
 use Scramble::Tile;
+use Scramble::Vector;
 
 my class Scramble::Tile::Simple
     is Scramble::Tile
@@ -9,11 +10,12 @@ my class Scramble::Tile::Simple
     has Int $.foreground-color is required;
     has Int $.background-color is required;
 
-    method render(::?CLASS:D: Int:D $dx, Int:D $dy --> Nil)
+    method render(::?CLASS:D: Scramble::Vector:D $vp --> Nil)
     {
+        my $mvp := $vp;
         Scramble::Terminal::foreground-color($.foreground-color);
         Scramble::Terminal::background-color($.background-color);
-        Scramble::Terminal::print($dx, $dy, $.character);
+        Scramble::Terminal::print($mvp.x, $mvp.y, $.character);
     }
 }
 

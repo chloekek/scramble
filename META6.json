@@ -6,6 +6,7 @@
         "Scramble::Region": "lib/Scramble/Region.pm6",
         "Scramble::Terminal": "lib/Scramble/Terminal.pm6",
         "Scramble::Tile": "lib/Scramble/Tile.pm6",
-        "Scramble::Tiles": "lib/Scramble/Tiles.pm6"
+        "Scramble::Tiles": "lib/Scramble/Tiles.pm6",
+        "Scramble::Vector": "lib/Scramble/Vector.pm6"
     }
 }

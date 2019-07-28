@@ -4,6 +4,7 @@ use Noise::Simplex;
 use Scramble::Region;
 use Scramble::Terminal;
 use Scramble::Tiles;
+use Scramble::Vector;
 
 sub MAIN(--> Nil)
     is export
@@ -19,7 +20,8 @@ sub MAIN(--> Nil)
         }
 
         my $region := Scramble::Region.new(:@tiles);
-        $region.render($rx * 16, 4 + $ry * 16);
+        my $vp := 16 ~* Scramble::Vector.new($rx, $ry);
+        $region.render($vp);
     }
 
     Scramble::Terminal::refresh();

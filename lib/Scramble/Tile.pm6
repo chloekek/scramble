@@ -1,5 +1,6 @@
 unit class Scramble::Tile;
 
 use Scramble::Terminal;
+use Scramble::Vector;
 
-method render(::?CLASS:D: Int:D $dx, Int:D $dy --> Nil) {…}
+method render(::?CLASS:D: Scramble::Vector:D $vp --> Nil) {…}
